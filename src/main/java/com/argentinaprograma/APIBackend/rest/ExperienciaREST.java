@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.argentinaprograma.APIBackend.controller.ExperienciaController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
@@ -19,6 +20,7 @@ import com.argentinaprograma.APIBackend.controller.ExperienciaController;
  */
 @RestController
 @RequestMapping("/experiencia")
+@CrossOrigin
 public class ExperienciaREST {
     
     @Autowired

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.argentinaprograma.APIBackend.controller.TecnologiaController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  *
@@ -19,6 +22,7 @@ import com.argentinaprograma.APIBackend.controller.TecnologiaController;
  */
 @RestController
 @RequestMapping("/tecnologia")
+@CrossOrigin
 public class TecnologiaREST {
     
     @Autowired
@@ -27,6 +31,12 @@ public class TecnologiaREST {
     @GetMapping("/lista")
     public List<Tecnologia> everybody(){
         return tecnologiaController.findAll();
+    }
+    
+    @PostMapping("/nueva")
+    public Long crearTecnologia(@RequestBody Tecnologia tecnologia) {
+        tecnologiaController.save(tecnologia);
+        return tecnologia.getId();
     }
     
 }

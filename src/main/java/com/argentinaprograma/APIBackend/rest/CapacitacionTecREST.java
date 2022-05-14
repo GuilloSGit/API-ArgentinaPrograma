@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.argentinaprograma.APIBackend.controller.CapacitacionTecController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
@@ -21,6 +22,7 @@ import com.argentinaprograma.APIBackend.controller.CapacitacionTecController;
  */
 @RestController
 @RequestMapping("/capacitacionTec")
+@CrossOrigin
 public class CapacitacionTecREST {
     
     @Autowired

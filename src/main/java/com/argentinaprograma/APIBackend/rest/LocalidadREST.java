@@ -5,14 +5,14 @@
  */
 package com.argentinaprograma.APIBackend.rest;
 
-import com.argentinaprograma.APIBackend.controller.ExperienciaTecController;
-import com.argentinaprograma.APIBackend.model.ExperienciaTec;
+import com.argentinaprograma.APIBackend.controller.LocalidadController;
+import com.argentinaprograma.APIBackend.model.Localidad;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,21 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @author guille
  */
 @RestController
-@RequestMapping("/experienciaTec")
+@RequestMapping("/localidad")
 @CrossOrigin
-public class ExperienciaTecREST {
+public class LocalidadREST {
     
     @Autowired
-    private ExperienciaTecController experienciaTecController;
+    private LocalidadController localidadController;
     
     @GetMapping("/lista")
-    public List<ExperienciaTec> everyOne() {
-        return experienciaTecController.findAll();
+    public List<Localidad> everybody(){
+        return localidadController.findAll();
     }
     
-    @GetMapping("/tec/{nombreTec}")
-    public Optional<ExperienciaTec> filteredByTec(@PathVariable("nombreTec") String nombreTec) {
-        return experienciaTecController.findByNombreTec(nombreTec);
+    @PostMapping("/nueva")
+    public Long crearLocalidad(@RequestBody Localidad localidad) {
+        localidadController.save(localidad);
+        return localidad.getId();
     }
     
 }

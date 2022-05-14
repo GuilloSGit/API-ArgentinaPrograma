@@ -10,8 +10,13 @@ import com.argentinaprograma.APIBackend.model.Persona;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/persona")
+@CrossOrigin
 public class PersonaREST {
     
     @Autowired
@@ -51,4 +57,24 @@ public class PersonaREST {
         return personaController.findByPaisResidencia(paisResidencia);
     }
     
+    // Crear una nueva persona
+    @PostMapping("/nueva")
+    public Long crearPersona(@RequestBody Persona persona) {
+        personaController.save(persona);
+        return persona.getId();
+    }
+    
+    // Eliminar una persona por id
+    @DeleteMapping("/eliminar/{id}")
+    public String eliminarPersona(@PathVariable("id") Long id) {
+        personaController.deleteById(id);
+        return "El id: " + id +" fue eliminado correctamente";
+    }
+    
+    // Actualizar una persona por id
+    @PutMapping("/actualizar")
+    public Persona editarPersona(@RequestBody Persona persona) {
+        personaController.save(persona);
+        return persona;
+    }
 }

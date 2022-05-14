@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.argentinaprograma.APIBackend.controller.CapacitacionController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
@@ -19,6 +20,7 @@ import com.argentinaprograma.APIBackend.controller.CapacitacionController;
  */
 @RestController
 @RequestMapping("/capacitacion")
+@CrossOrigin
 public class CapacitacionREST {
     
     @Autowired

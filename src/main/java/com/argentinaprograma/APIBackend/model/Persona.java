@@ -44,6 +44,9 @@ public class Persona {
     @Column
     private String paisResidencia;
     
+    @Column
+    private String urlImg;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_propietario")
     private List<Tecnologia> tecnologias;
@@ -59,6 +62,10 @@ public class Persona {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_propietario")
     private List<Capacitacion> capacitacion;
+        
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_persona")
+    private List<Localidad> localidad;
 
     public Long getId() {
         return id;
@@ -111,6 +118,14 @@ public class Persona {
     public String getPaisResidencia() {
         return paisResidencia;
     }
+    
+    public String getUrlImg() {
+        return urlImg;
+    }
+
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
 
     public void setPaisResidencia(String paisResidencia) {
         this.paisResidencia = paisResidencia;
@@ -146,6 +161,14 @@ public class Persona {
 
     public void setCapacitacion(List<Capacitacion> capacitacion) {
         this.capacitacion = capacitacion;
+    }
+    
+    public List<Localidad> getLocalidad() {
+        return localidad;
+    }
+
+    public void setLocalidad(List<Localidad> localidad) {
+        this.localidad = localidad;
     }
 
 }
